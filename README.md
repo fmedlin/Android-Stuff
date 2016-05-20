@@ -10,8 +10,8 @@ With this version of adb (Mac):
 Make /system writable by:
 
     adb root
-    adb remount
     adb disable-verity
+    adb remount
     adb reboot
 
 Seems to take a few reboots sometimes before the remount succeeds.
@@ -26,7 +26,18 @@ Eventually, after the device boots, replace the privileged app. Let's say it's c
     adb push mtron.apk /system/priv-app
     adb shell chmod 644 /system/priv-app/mtron.apk
     adb reboot
+  
+## Build Android N
+
+When encountering this error: `Unsupported curl, please use a curl not based on SecureTransport ninja` on Mac.
+
+Replace curl with an SSL 
+
+    brew install curl --with-openssl
+    export PATH=$(brew --prefix curl)/bin:$PATH
     
+H/T to [stack overflow](http://stackoverflow.com/a/35024131/42671)
+
 ## Center justification in a TextView
 
     <TextView
