@@ -29,7 +29,7 @@ Eventually, after the device boots, replace the privileged app. Let's say it's c
   
 ## Build Android N
 
-When encountering this error: `Unsupported curl, please use a curl not based on SecureTransport ninja` on Mac.
+When encountering this error on Mac: `Unsupported curl, please use a curl not based on SecureTransport ninja`
 
 Replace curl with an SSL 
 
