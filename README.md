@@ -27,17 +27,27 @@ Eventually, after the device boots, replace the privileged app. Let's say it's c
     adb shell chmod 644 /system/priv-app/mtron.apk
     adb reboot
   
-## Build Android N
+## Building Android N
 
-When encountering this error on Mac: `Unsupported curl, please use a curl not based on SecureTransport ninja`
+### Unsupported curl, please use a curl not based on SecureTransport ninja
 
-Replace curl with an SSL 
+When encountering this error on Mac, replace curl with an SSL 
 
     brew install curl --with-openssl
     export PATH=$(brew --prefix curl)/bin:$PATH
     
 H/T to [stack overflow](http://stackoverflow.com/a/35024131/42671)
 
+### Out of memory error
+
+    GC overhead limit exceeded.
+    Try increasing heap size with java option '-Xmx<size>'.
+    Warning: This may have produced partial or corrupted output.
+    
+Try increasing the heap size. This worked for me:
+
+    export ANDROID_JACK_VM_ARGS="-Xmx4g -Dfile.encoding=UTF-8 -XX:+TieredCompilation"
+    
 ## Center justification in a TextView
 
     <TextView
