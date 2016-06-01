@@ -27,7 +27,7 @@ Eventually, after the device boots, replace the privileged app. Let's say it's c
     adb shell chmod 644 /system/priv-app/mtron.apk
     adb reboot
   
-## Building Android N
+## Building Android from source
 
 ### Unsupported curl, please use a curl not based on SecureTransport ninja
 
@@ -47,7 +47,22 @@ H/T to [stack overflow](http://stackoverflow.com/a/35024131/42671)
 Try increasing the heap size. This worked for me:
 
     export ANDROID_JACK_VM_ARGS="-Xmx4g -Dfile.encoding=UTF-8 -XX:+TieredCompilation"
+
+### What Android version am I building?
+
+See the `BUILD_ID` value after executing the `lunch` command
+
+    ...
+    HOST_OS_EXTRA=Darwin-15.5.0-x86_64-i386-64bit
+    HOST_CROSS_OS=
+    HOST_CROSS_ARCH=
+    HOST_CROSS_2ND_ARCH=
+    HOST_BUILD_TYPE=release
+    BUILD_ID=MOB30J
+    OUT_DIR=out
     
+Checkout the [source code tags](http://source.android.com/source/build-numbers.html#source-code-tags-and-builds) to lookup the `BUILD_ID` and find the branch and version that is being built.
+
 ## Center justification in a TextView
 
     <TextView
