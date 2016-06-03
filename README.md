@@ -11,10 +11,10 @@ Make /system writable by:
 
     adb root
     adb disable-verity
-    adb remount
     adb reboot
+    adb remount
 
-Seems to take a few reboots sometimes before the remount succeeds.
+Seems to take a few reboots __sometimes__ before the remount succeeds.
 
 It failed for me on an Ubuntu VM. It didn't understand the `disable-verity` command.
 
@@ -22,9 +22,9 @@ It failed for me on an Ubuntu VM. It didn't understand the `disable-verity` comm
     
 Eventually, after the device boots, replace the privileged app. Let's say it's called mtron.
 
-    adb shell rm -rf /system/priv-app/mtron
-    adb push mtron.apk /system/priv-app
-    adb shell chmod 644 /system/priv-app/mtron.apk
+    adb shell rm /system/priv-app/mtron/mtron.apk
+    adb shell rm -rf /system/priv-app/mtron/oat  // if compiled with jack
+    adb push mtron.apk /system/priv-app/mtron
     adb reboot
   
 ## Building Android from source
