@@ -63,7 +63,17 @@ See the `BUILD_ID` value after executing the `lunch` command
     
 Checkout the [source code tags](http://source.android.com/source/build-numbers.html#source-code-tags-and-builds) to lookup the `BUILD_ID` and find the branch and version that is being built.
 
-## Center justification in a TextView
+## Robolectric
+
+### Robolectric with ActiveAndroid
+
+#### Tests that pass in Robolectric don't pass using CLI gradle
+
+Not completely sure what is wrong here. However, the Model class that causes the problem is defined in a dependent module rather than in the module under test. This was done so that two separate flavors could both have that table in their respective databases
+
+## Views
+
+### Center justification in a TextView
 
     <TextView
         ...
